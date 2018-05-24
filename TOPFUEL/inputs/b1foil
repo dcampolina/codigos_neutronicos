@@ -1,0 +1,431 @@
+set title "MB"
+
+%all dimensions in cm
+
+% --- Assembly Surfaces (core pitch = 8.15 cm):
+
+% Middle fuel:
+
+surf 1  cuboid -0.0305  0.0305 -3.25   3.25    0 61.5 % Fuel dimensions
+surf 2  cuboid -0.0675  0.0675 -3.525  3.525   0 61.5 % Cladding dimensions
+surf 3  cuboid -0.25    0.25   -4.025 -3.525   0 61.5 % Cladding suport dimensions
+surf 4  cuboid -0.25    0.25    3.525  4.025   0 61.5 % Cladding suport dimensions
+surf 5  cuboid -4.025   4.025  -4.025  4.025   0 61.5 % Fuel assembly dimensions
+surf 6  cuboid -4.075   4.075  -4.075  4.075   0 61.5 % Fuel assembly with space between assemblies
+surf 7  cuboid -12.225  12.225 -20.375 20.375  0 61.5 % Outer boundary for the middle fuel
+surf 8  cyl     0              -3.775  0.02    0 61.5 % Cadmium wire
+surf 9  cyl     0               3.775  0.02    0 61.5 % Cadmium wire
+surf 10 cyl     0               3.775  0.02    0 61.5 % Cadmium wire with no cadmium
+surf 11 cyl     0              -3.775  0.02    0 61.5 % Cadmium wire with no cadmium
+
+% Control rods:
+
+
+% light water cuboid
+surf 21 cuboid -13.825    -12.725      1.00    15.3   0 61.5  % Inside top left control rod dimensions
+surf 34 cyl    -13.275                 1.00            0.55 0 61.5  % Top bottom circle
+surf 35 cyl    -13.275                         15.3    0.55 0 61.5  % Top top circle
+
+% Absorber part of control rod
+surf 30 cuboid -13.625    -12.925      1.00    15.3   0 28.0  % Inside inside top left control rod dimensions
+surf 42 cyl    -13.275                 1.00            0.35 0 28.0  % Top bottom circle
+surf 43 cyl    -13.275                         15.3    0.35 0 28.0  % Top top circle
+
+% light water cuboid
+surf 22 cuboid -13.825    -12.725     -15.3    -1.00   0 61.5  % Inside bottom left control rod dimensions
+surf 38 cyl    -13.275                -15.30            0.55 0 61.5  % Bottom bottom circle
+surf 39 cyl    -13.275                         -1.00    0.55 0 61.5  % Bottom top circle
+
+% Absorber part of control rod
+surf 31 cuboid -13.625    -12.925     -15.30   -1.00   0 28.0  % Inside inside bottom left control rod dimensions
+surf 44 cyl    -13.275                -15.30            0.35 0 28.0  % Top bottom circle
+surf 45 cyl    -13.275                         -1.00    0.35 0 28.0  % Top top circle
+
+% light water cuboid
+surf 23 cuboid  12.725     13.825      1.00    15.3   0 61.5  % Inside top right control rod dimensions
+surf 36 cyl     13.275                 1.00            0.55 0 61.5  % Top bottom circle
+surf 37 cyl     13.275                         15.3    0.55 0 61.5  % Top top circle
+
+% Absorber part of control rod
+surf 32 cuboid  12.925     13.625     1.00    15.30   0 28.0  % Inside inside top right control rod dimensions
+surf 46 cyl     13.275                 1.00            0.35 0 28.0  % Top bottom circle
+surf 47 cyl     13.275                         15.30    0.35 0 28.0  % Top top circle
+
+% light water cuboid
+surf 24 cuboid  12.725     13.825     -15.3    -1.00   0 61.5  % Inside bottom right control rod dimensions
+surf 40 cyl     13.275                -15.30            0.55 0 61.5  % Bottom bottom circle
+surf 41 cyl     13.275                         -1.00    0.55 0 61.5  % Bottom top circle
+
+% Absorber part of control rod
+surf 33 cuboid  12.925     13.625     -15.30   -1.00   0 28.0  % Inside inside bottom right control rod dimensions
+surf 48 cyl     13.275                -15.30            0.35 0 28.0  % Top bottom circle
+surf 49 cyl     13.275                         -1.00    0.35 0 28.0  % Top top circle
+
+%Bigger part were the other parts fit
+surf 25 cuboid  12.225     14.325     -16.25   16.25   0 61.5   % right control rods
+surf 26 cuboid -14.325    -12.225     -16.25   16.25   0 61.5   % left control rods 
+
+surf 27 cuboid -14.325     14.325     -20.625  20.625  0 61.5 % Control rods + Middle fuel assemblies
+
+
+surf 91  cuboid -22.475 22.475  -16.25  16.25   0 61.5    % fuel+ control rods
+surf 92  cuboid -22.625 22.625  -16.25  16.25   0 61.5    % Chimney
+
+surf 100 cuboid -30.4  30.4   -30.4  30.4 0 61.5    %outter boundary
+surf 101 cuboid -50.4  50.4   -50.4  50.4 0 61.5    %outter boundary
+
+% Reflector for MB02
+% Outer cuboid
+surf 150  cuboid -22.625 22.625   16.25  22.20 0 61.5    % up cuboid
+surf 151  cuboid -22.625 22.625  -30.4  -16.25  0 61.5    % down cuboid
+surf 152  cuboid -30.4  -22.625  -30.4   30.4  0 61.5    % left cuboid
+surf 153  cuboid  22.625 30.4    -30.4   30.4  0 61.5    % right cuboid
+% Inner cuboid
+surf 154  cuboid -22.475 22.475   16.4   22.05 0 61.5    % up cuboid
+surf 155  cuboid -22.475 22.475  -30.25  -16.4  0 61.5    % down cuboid
+surf 156  cuboid -30.25  -22.775  -30.25   30.25  0 61.5    % left cuboid
+surf 157  cuboid  22.775 30.25    -30.25   30.25  0 61.5    % right cuboid
+
+% Detector surfaces
+% Cadmium Tube
+surf 162 cyl 0 23.55 0.50 30.185 31.315
+surf 163 cyl 0 23.55 0.40 30.285 31.215
+
+% AlMg3 tube
+surf 160 cyl 0 23.55 0.65 30.0 31.5
+surf 161 cyl 0 23.55 0.55 30.1 31.4
+
+% Polyethylene tube
+surf 158 cyl 0 23.55 0.9 27.4 34.1
+surf 159 cyl 0 23.55 1.05 27.3 34.2
+
+
+
+% --- Cells:
+
+% Middle fuel:
+
+cell 1  4  fuel      -1                 % Fuel cell
+cell 2  4  clad       1 -2              % Claddind
+cell 3  4  clad      -3  8              % Cladding suport
+cell 4  4  clad      -4  9              % Cladding suport
+cell 5  4  cool       2 3 4 -5          % Coolant inside the fuel assembly
+cell 6  2  fill 10   -5                 % First assembly
+cell 7  2  cool       5 -6              % First coolant
+cell 8  3  clad      -6                 % Iradiation space
+cell 9  1  fill 20   -7                 % Middle fuel
+cell 21 1  cool       7  25 26 -27      % Outside of surf10 that is referent to lat20
+cell 22 4  cadmium   -8                 % Cadmium wire
+cell 23 4  cadmium   -9                 % Cadmium wire
+
+
+cell 13  7  fuel      -1                 % Fuel cell
+cell 14  7  clad       1 -2              % Claddind
+cell 15  7  clad      -3  8              % Cladding suport
+cell 16  7  clad      -4  9              % Cladding suport
+cell 17  7  cool       2 3 4 -5          % Coolant inside the fuel assembly
+cell 18  7  clad      -10                % Cadmium wire with no wire
+cell 19  7  clad      -11                % Cadmium wire with no wire
+
+% Control rods:
+
+cell 135 1 cool  -34    21  42        % top top left semi circle
+cell 136 1 cool  -35    21  43        % top bottom left semi circle
+
+cell 137 1 cool  -36    23 46         % top top right semi circle
+cell 138 1 cool  -37    23 47         % top bottom right semi circle
+
+cell 139 1 cool  -38   22  44         % bottom top left semi circle
+cell 140 1 cool  -39   22  45         % bottom bottom left semi circle
+
+cell 141 1 cool  -40   24   48        % bottom top right semi circle
+cell 142 1 cool  -41   24   49       % bottom bottom right semi circle
+
+
+cell 131 1 hafnium  -30 42 43         % inside top left rod
+cell 132 1 hafnium  -31 44 45       % inside bottom left rod
+cell 133 1 hafnium  -32 46 47        % inside top right rod
+cell 134 1 hafnium  -33 48 49        % inside bottom right rod
+
+cell 143 1 hafnium  -42              % top top left semi circle
+cell 144 1 hafnium  -43              % top bottom left semi circle
+
+cell 145 1 hafnium  -44              % top top right semi circle
+cell 146 1 hafnium  -45              % top bottom right semi circle
+
+cell 147 1 hafnium  -46              % bottom top left semi circle
+cell 148 1 hafnium  -47              % bottom bottom left semi circle
+
+cell 149 1 hafnium  -48              % bottom top right semi circle
+cell 150 1 hafnium  -49             % bottom bottom right semi circle
+
+cell 31 1 cool  -21  30  42 43        % inside top left rod
+cell 32 1 cool  -22  31  44 45          % inside bottom left rod
+cell 33 1 cool  -23  32  46 47          % inside top right rod
+cell 34 1 cool  -24  33  48 49          % inside bottom right rod
+
+cell 35 1 clad        21 22 34 35 38 39 -26         % inside left rod
+cell 36 1 clad        23 24 36 37 40 41 -25         % inside right rod
+
+
+
+% middle + rods:
+
+cell 38 5 fill 1     -27
+cell 39 5 cool        27
+
+cell 41 6 fill 30    -91
+cell 42 6 cool        91
+
+cell 43 8 fill 6     -91 
+cell 44 8 clad        91   -92         % Reactor wall
+
+cell 61 9 clad -150 154
+cell 62 9 clad -151 155
+cell 63 9 clad -152 156
+cell 64 9 clad -153 157
+cell 65 9 cool 150 151 152 153
+
+cell 66 9 moder -154
+cell 67 9 moder -155
+cell 68 9 moder -156
+cell 69 9 moder -157
+
+
+cell 110 0 fill 8 -92
+cell 111 0 fill 9  92 -100 159
+cell 112 0 cool 100 -101
+cell 100 0 outside  101
+cell 113 0 fill 11 -159
+
+% detector cells
+cell 200 11 air -163
+cell 201 11 air 163 -162
+cell 202 11 air 162 -161
+cell 203 11 air 161 -160
+cell 204 11 air 160 -158
+cell 205 11 poli 158 -159
+
+% --- Lattices:
+
+lat 10 11 0 0 0 21 1 1 0.38333333333 1 1
+
+4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4
+
+lat 20 11 0 0 0 3 4 1 8.15 8.15 1
+ 
+2 2 2 
+2 2 2 
+2 3 2 
+2 2 2
+
+
+lat 30 11 0 0 0 3 1 1 26.55 1 1
+
+5 5 5
+
+
+% --- Fuel (U3Si2/Al 2.8at/(barn*cm) meat):
+ 
+mat fuel         sum   
+% U234    0.0000141217
+    92234.06c    0.0000141217
+% U235    0.00141695
+    92235.06c    0.00141695
+% U238    0.00567087
+    92238.06c    0.00567087
+% Al      0.00440781
+    13027.06c    0.00440781
+% Si      0.00473463
+    14028.06c    0.00473463
+
+%Polietileno    
+
+mat poli  sum
+
+6000.06c -0.8306                                
+
+1001.06c -0.1394                                                   
+
+%mt60  poly.01t
+
+% --- Air : Provisório
+ 
+mat air          5.43466e-05    
+       8016.03c  1.0868e-05                                                
+       7014.03c  4.3479e-05
+
+% --- Cladding(Al 2.71gcm-3):
+
+mat clad         -2.71    rgb 200 200 200
+% Al 97.83
+    13027.06c    -97.83
+% Cu 0.21
+    29063.06c    -0.21
+% Cr 0.05
+    24052.06c    -0.05
+% Mg 0.91
+    12025.06c    -0.91
+% Si 0.64
+    14028.06c    -0.64
+% Zn 0.02
+    30064.06c    -0.02
+% Fe 0.25
+    26056.06c    -0.25
+% Mn 0.03
+    25055.06c    -0.03
+% Ti 0.03
+    22048.06c    -0.03
+
+mat almg3         sum    
+% Al 97.83
+    13027.06c    -97.83
+
+% Mg 0.91
+    12025.06c    -2.17
+
+
+
+% --- Reflector in one side of the core (Be 1.85gcm-3):
+
+mat beryllium    -1.85
+% Be 100
+    4009.06c     -1
+
+% --- Absorbing material in the absorber plates (Hafnium 12.9gcm-3):
+
+mat hafnium     -12.9
+% Hf   97.86
+    72178.06c   -97.86
+% Zr   2.14 
+    40091.06c   -2.14
+
+% --- Coolant water:
+
+mat cool    1.00113E-01
+    1001.06c      6.67421E-02
+    8016.06c      3.33711E-02
+
+% --- Moderator heavy water:
+
+mat moder    -1.1056
+        1002.06c 2
+        8016.06c 1
+		
+% --- Natural boron :
+mat boron 1.0
+5010.06c 0.2
+5011.06c 0.8
+
+
+% --- Reactor Pool (Stainless Steel AISI-304L 8.0gcm-3):
+
+mat stainless    -8.0
+% Fe    66.547
+    26056.06c    -66.547
+% Cr    19.00
+    24052.06c    -19.00
+% Ni    10.50
+    28058.06c    -10.50
+% Mn    2.00
+    25055.06c    -2.00
+% C     0.035
+    6012.06c     -0.035
+% Si    1.00
+    14028.06c    -1.00
+% Co    0.180
+    27059.06c    -0.180
+% Cu    0.180
+    29065.06c    -0.180
+% V     0.140
+    23051.06c    -0.140
+% W     0.130
+    74184.06c    -0.130
+% Mo    0.398
+    42098.06c    -0.398
+
+% --- Reflector vessel, chimney and out-of-core irradiation facilities (Zircaloy-4 6.55gcm-3):
+
+mat zircaloy     -6.55
+% Zr    98.23
+    40091.06c    -98.23
+% Cr    0.115
+    24052.06c    -0.115
+% Fe    0.225
+    26056.06c    -0.225
+% O     0.12
+    8016.06c     -0.12
+% Sn    1.29
+    50120.06c    -1.29
+
+% --- Absorber plates guide (Zircadyne 6.51gcm-3):
+
+mat zircadyne    -6.51
+% Zr    99.176
+    40091.06c    -99.176
+% Hf    0.6
+    72178.06c    -0.6
+% C     0.02
+    6012.06c     -0.02
+% Fe    0.035
+    26056.06c    -0.035
+% Cr    0.035
+    24052.06c    -0.035
+% N     0.004
+    7014.06c     -0.004
+% O     0.13
+    8016.06c     -0.13
+
+
+% --- Cadmium wire (Cd 8.64gcm-3):
+
+mat cadmium      -8.64
+% Cd    1
+    48112.06c    -8.64
+
+
+
+% --- Thermal scattering data for light and heavy water:
+
+therm lwtr lwj3.07t
+therm hwtr hwj3.07t
+
+% --- Cross section data library file path:
+
+set acelib "/home/cfx/vidal/rmb/sss_endfb7u.xsdata" % "/home/cfx/vitor/trigafuel/xsdata/sss_endfb7u2.xsdata"
+
+% --- Periodic boundary condition:
+
+set bc 1 1 1
+
+% --- Neutron population and criticality cycles:
+
+set pop 80000 1000 10 %(npop cycles inactivecycles [keff0 interval])
+%set pop 800 20 5 %(npop cycles inactivecycles [keff0 interval])
+
+% --- Geometry and mesh plots:
+
+plot 3 1000 1000  0 -15.825    -10.725      00    19.3 
+plot 3 500 500  30.75 -4.05   4.05 20 25
+plot 3 1000 1000  0 -4.05   4.05   -8.06  0
+plot 3 500 500   30.75 %  -14.325     14.325     -20.625  20.625
+%mesh 3 1000 1000  30.75 -30.9 30.9 -30.9 30.9
+%mesh 3 500 500 
+%mesh 1 500 500
+
+% set powerdens 1.48945E-03
+% --- Detector:
+set power 100 fuel
+ene 2 1 0 0.625e-6    % Energy grid thermal
+
+det 1             % Average total flux
+dc 200          % Score inside cell 200
+dv 0.4675        % internal volume of Cd box
+
+det 2             % Average fast flux
+de 2             % Energy grid 2 = thermal
+dc 200          % Score inside cell 200
+dv 0.4675        % internal volume of Cd box
+
+   
+
